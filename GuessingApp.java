@@ -6,6 +6,7 @@
 
 
 import java.util.*;
+
 public class GuessingApp{
 	public static void main(String[] args) throws InvalidInputException{
 		System.out.println("Welcome to the Guessing App.");
@@ -13,8 +14,14 @@ public class GuessingApp{
 		gameConfig.showRules();
 		
 		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Enter Your Name: ");
+		String player = sc.nextLine();
+		
 		int attempts = 0;
 		int hintCount = 0;
+		
+		boolean win = false;
 		
 		try{
 			while(attempts < gameConfig.getMaxAttempts()){
@@ -29,11 +36,14 @@ public class GuessingApp{
 				if(hintCount<4)System.out.println(hint);
 				
 				if("Correct".equals(result)){
+					win = true;
 					break;
 				}
 			}
 		}catch(InvalidInputException e){
 			System.out.println(e.getMessage());
 		}
+		
+		StorageService.saveResult(player,attempts,win);
 	}
 }
