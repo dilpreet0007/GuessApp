@@ -9,6 +9,9 @@ import java.util.*;
 
 public class GuessingApp{
 	public static void main(String[] args) throws InvalidInputException{
+		
+		boolean restart = false;
+		do{
 		System.out.println("Welcome to the Guessing App.");
 		GameConfig gameConfig = new GameConfig();
 		gameConfig.showRules();
@@ -45,5 +48,7 @@ public class GuessingApp{
 		}
 		
 		StorageService.saveResult(player,attempts,win);
+		restart = GameController.restartGame(sc);
+		}while(restart);
 	}
 }
