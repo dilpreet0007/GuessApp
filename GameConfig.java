@@ -1,3 +1,4 @@
+import java.util.*;
 class GameConfig{
 	private final int MAX = 100;
 	private final int MIN = 1;
