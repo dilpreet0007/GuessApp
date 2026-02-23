@@ -1,10 +1,5 @@
-class InvalidInputException extends Exception{
-	public InvalidInputException(String message){
-		super(message);
-	}
-}
 
-class ValidationService{
+public class ValidationService{
 	public static int validInput(String input) throws InvalidInputException{
 		try{
 			int value = Integer.parseInt(input);
